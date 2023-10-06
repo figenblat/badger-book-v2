@@ -38,15 +38,19 @@ import Pagination from 'react-bootstrap/Pagination';
 
         pages.push(
             <Pagination.First
+            
             active = {activePage === 1}
             onClick={()=>setActivePage(1)}
             />
         )
         pages.push(
             <Pagination.Prev
+            disabled ={activePage === 1 || numStudents===0}
             active={activePage === activePage - 1}
             onClick={()=> setActivePage(activePage-1)}
-            />
+            >
+               Previous
+            </Pagination.Prev>
         )
 
 
@@ -65,9 +69,12 @@ import Pagination from 'react-bootstrap/Pagination';
 
         pages.push(
             <Pagination.Next
+            disabled = {activePage === num_pages || numStudents === 0}
             active={activePage === activePage + 1}
             onClick={()=> setActivePage(activePage+1)}
-            />
+            >
+                Next 
+            </Pagination.Next>
         )
         pages.push(
             <Pagination.Last
@@ -99,6 +106,11 @@ import Pagination from 'react-bootstrap/Pagination';
 
         for(let i = 0; i < students.length; i++){
 
+            /*
+            TODO
+            need to make sure can search by name with space between first and last
+            need to also make sure to trim all my searches 
+            */
             // just searching by name 
             if(inputName != "" && inputMajor === "" && inputInterest ===""){
                 if(students[i].name.first.toLowerCase().includes(inputName) || students[i].name.last.toLowerCase().includes(inputName)){
@@ -119,6 +131,7 @@ import Pagination from 'react-bootstrap/Pagination';
                 for(let j = 0; j<students[i].interests.length; j++){
                     if(students[i].interests[j].toLowerCase().includes(inputInterest)){
                         filteredStudents.push(students[i])
+                        break;
                     }
 
                 }
@@ -169,6 +182,8 @@ import Pagination from 'react-bootstrap/Pagination';
             }
          }
 
+         
+
         
         setShownStudents(filteredStudents);
         
@@ -183,6 +198,7 @@ import Pagination from 'react-bootstrap/Pagination';
         numStudents = students.length;
     }
     
+
     
    
     return <div>
