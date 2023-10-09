@@ -106,11 +106,7 @@ import Pagination from 'react-bootstrap/Pagination';
 
         for(let i = 0; i < students.length; i++){
 
-            /*
-            TODO
-            need to make sure can search by name with space between first and last
-            need to also make sure to trim all my searches 
-            */
+            
             // just searching by name 
             if(inputName != "" && inputMajor === "" && inputInterest ===""){
                 if(students[i].name.first.toLowerCase().includes(inputName) || students[i].name.last.toLowerCase().includes(inputName)){

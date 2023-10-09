@@ -5,7 +5,7 @@ const Student = (props) => {
     let listArr = []
     for(let i = 0; i < props.interests.length; i++){
         const index = props.interests.indexOf(props.interests[i]);
-        listArr.push(<li key = {index.toString()}>{props.interests[i]}</li>)
+        listArr.push(<li key = {index}>{props.interests[i]}</li>)
     }
 
 
